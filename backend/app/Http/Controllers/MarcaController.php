@@ -40,6 +40,17 @@ class MarcaController extends Controller
     public function show(string $id)
     {
         //
+        $marcas=Marca::find($id);
+
+        if(!$marcas){
+
+            return response()->json(
+            [
+            'mensaje'=>'Categoria no encontrada'
+            ],404
+            );
+        }
+        return response()->json($marcas,200);
     }
 
     /**
