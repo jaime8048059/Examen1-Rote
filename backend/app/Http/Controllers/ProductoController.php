@@ -30,7 +30,7 @@ class ProductoController extends Controller
         $producto=Producto::create($request->all());
 
         return response()->json([
-            'mensaje'=>'Categoria creada exitosamente',
+            'mensaje'=>'producto creada exitosamente',
             'producto'=> $producto
 
         ],201);
@@ -48,7 +48,7 @@ class ProductoController extends Controller
 
             return response()->json(
             [
-            'mensaje'=>'Categoria no encontrada'
+            'mensaje'=>'producto no encontrada'
             ],404
             );
         }
@@ -61,6 +61,29 @@ class ProductoController extends Controller
     public function update(Request $request, string $id)
     {
         //
+       $producto=Producto::find($id);
+
+        if(!$producto){
+
+            return response()->json(
+            [
+            'mensaje'=>'producto no encontrada'
+            ],404
+            );
+          }
+           $request->validate([
+            'nombre'=>'required',
+            'precio'=>'required',
+            
+        ]);
+
+        $producto->update($request->all());
+
+        return response()->json([
+            'mensaje'=>'producto actualizada exitosamente',
+            'producto'=> $producto
+
+        ],201);
     }
 
     /**
@@ -69,5 +92,23 @@ class ProductoController extends Controller
     public function destroy(string $id)
     {
         //
+
+         $producto=Producto::find($id);
+         if(!$producto){
+
+            return response()->json(
+            [
+            'mensaje'=>'producto no encontrada'
+            ],404
+            );
+        }
+        $producto->delete();
+        return response ()->json([
+            'mensaje'=>'Producto eliminada exitosamente'
+        ],200);
+       
+         
+
+           
     }
 }
