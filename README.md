@@ -2,5 +2,6 @@
 Fulltack Proyect
 # Proyecto web tienda Rote
 # Herramientas MySql, PHP, Laravel
-# Estudiante Jiaime Clemente Rmirez
+# Estudiante Jiime Clemente Ramirez
 # Primer Examen
+# TIENDA DE CELULARES "ROTE"
